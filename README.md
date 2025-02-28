@@ -23,7 +23,7 @@ npm install
 
 3. Create a `.env` file in the root directory with the following variables:
 ```
-GHOST_API_URL=https://panel.502nda3.org/ghost/api/content
+GHOST_API_URL=your_ghost_panel_api_link
 GHOST_CONTENT_KEY=your_content_key_here
 PORT=3000
 ```
