@@ -1,7 +1,34 @@
 // Site data
 const siteData = {
     heroDescription: '502nd PIR is an authentic WW2 Realism unit for ArmA 3 that has a relaxed atmosphere.',
+    prerequisites: [
+        {
+            title: "Microphone",
+            description: "We require that you have a functional Microphone."
+        },
+        {
+            title: "Legal Copy",
+            description: "A legal copy of Arma 3 from a seller."
+        },
+        {
+            title: "English",
+            description: "You must speak fluent English."
+        },
+        {
+            title: "First Person",
+            description: "Abillity and willingness to play Arma 3 in First Person."
+        },
+        {
+            title: "Attendance",
+            description: "Being able to attend one of our operations on any of the operation days a week"
+        },
+        {
+            title: "Teamspeak",
+            description: "Willingness to download and use Teamspeak 3 and TFAR plugin (Task Force Arrowhead Radio)."
+        }
+    ]
 };
+
 
 // Handle mobile menu toggle
 function toggleMenu() {
@@ -124,16 +151,42 @@ function addFallbackBlogPosts() {
     });
 }
 
+// Function to create a simple card from a requirement object
+function createCard(requirement) {
+    const card = document.createElement('div');
+    card.className = 'card';
+
+    const title = document.createElement('div');
+    title.className = 'card-title';
+    title.textContent = requirement.title;
+    card.appendChild(title);
+
+    const description = document.createElement('div');
+    description.className = 'card-description';
+    description.textContent = requirement.description;
+    card.appendChild(description);
+
+    return card;
+}
+
+// Add default cards to the container
+function addDefaultCards() {
+    // DOM elements
+    const cardContainer = document.getElementById('card-container');
+
+    siteData.prerequisites.forEach(req => {
+        const card = createCard(req);
+        cardContainer.appendChild(card);
+    });
+}
+
 // Initialize the page
 function initPage() {
-    // Set the hero description
     document.getElementById('heroDescription').textContent = siteData.heroDescription;
-
-    // Set the current year in footer
     document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-    // Fetch and populate blog posts
     populateBlogPosts();
+    addDefaultCards();
 }
 
 // Run initialization when DOM is loaded
